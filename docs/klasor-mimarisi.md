@@ -29,3 +29,9 @@ kampus-coffee/
 ```
 
 `node_modules/`, `.astro/`, `dist/` ve `src-tauri/target/` üretilmiş çıktılardır; kaynak teslimine eklenmez. Rotalar [mimari ağaçta](mimari-agac.md), renkler [marka belgesinde](branding.md) tutulur.
+
+---
+
+## 🗄️ Geçici Yerel Arka Uç (`src-tauri/src/backend/`)
+
+SQLite tabanlı geçici arka uç (migration, rol/izin, kaynak denetleyicileri, iş işlevleri) `src-tauri/src/backend/` altındadır; ayrıntı, tablolar ve komut listesi tek kaynakta: [`docs/backend.md`](backend.md).
