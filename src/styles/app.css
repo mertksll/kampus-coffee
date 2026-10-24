@@ -2882,3 +2882,5 @@ main {
     padding: 0 26px 26px;
   }
 }
+
+:root { --ui-space: 20px; --ui-gap: 8px; --ui-border: 1px; --ui-focus: 3px; --ui-photo: 216px; }

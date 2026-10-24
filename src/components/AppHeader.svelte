@@ -4,7 +4,7 @@
   import { validProfile } from "$lib/coffee";
   import Icon from "./Icon.svelte";
   import AppNav from "./AppNav.svelte";
-  let { lang = "tr", currentPath = "/" } = $props<{ lang?: string; currentPath?: string }>();
+  let { lang = "tr", currentPath = "/" }: { lang?: string; currentPath?: string } = $props();
   let destination = $state("Sınıfını seç");
   let initials = $state("");
   const labels: Record<string, string> = {

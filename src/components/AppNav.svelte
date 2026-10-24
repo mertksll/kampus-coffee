@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import Icon from "./Icon.svelte";
   import { validCart, totals } from "$lib/coffee";
-  let { currentPath = "/", lang = "tr" } = $props<{ currentPath?: string; lang?: string }>();
+  let { currentPath = "/", lang = "tr" }: { currentPath?: string; lang?: string } = $props();
   let count = $state(0);
   const names: Record<string, string[]> = {
     tr: ["Keşfet", "Sepetim", "Siparişlerim", "Profilim"],

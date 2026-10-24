@@ -23,7 +23,7 @@
     type Order,
     type Profile,
   } from "$lib/coffee";
-  let { view = "menu", productId = 1 } = $props<{ view?: string; productId?: number }>();
+  let { view = "menu", productId = 1 }: { view?: string; productId?: number } = $props();
   let cart = $state<CartItem[]>([]),
     orders = $state<Order[]>([]),
     favorites = $state<number[]>([]),
