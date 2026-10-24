@@ -1,0 +1,22 @@
+bun test v1.4.4 (38afee6c8)
+
+tests/native.test.ts:
+(pass) Native web sözleşmesi > web aynı tipli takip kodunu verir [0.68ms]
+(pass) Native web sözleşmesi > sıfır, negatif, kesir, NaN ve üst sınır reddedilir [0.17ms]
+(pass) Native web sözleşmesi > sentetik örnekler aynı doğrulamadan geçer [0.43ms]
+
+tests/coffee.test.ts:
+(pass) Sipariş iş kuralları > 4 kahvede indirim yok, 5 kahvede %10 indirim var [0.20ms]
+(pass) Sipariş iş kuralları > Büyük boy ve alternatif süt tutara dahil edilir [0.02ms]
+(pass) Sipariş iş kuralları > İndirim aynı kafedeki farklı ürünlerin toplam adedine uygulanır [0.02ms]
+(pass) Sipariş iş kuralları > Başka kafeden ürün içeren kayıt reddedilir [0.02ms]
+(pass) Sipariş iş kuralları > Bozuk, negatif veya kesirli adet ve bilinmeyen seçenek reddedilir [0.16ms]
+(pass) Sipariş iş kuralları > Geçerli kayıt kabul edilir; bozuk sipariş kodu ve durum reddedilir [0.35ms]
+(pass) Yeni ekleme mevcut sepeti değiştirmeden birleştirir; adet taşması geri alınır [0.43ms]
+(pass) Profil yalnızca tanımlı kafe ve sınırlı metin alanları kabul eder [0.04ms]
+(pass) Katalogda 24 benzersiz ürün ve her kafede 8 seçenek var [0.27ms]
+
+ 12 pass
+ 0 fail
+ 37 expect() calls
+Ran 12 tests across 2 files. [10.00ms]

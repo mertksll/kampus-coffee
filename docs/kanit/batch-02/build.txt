@@ -1,0 +1,9 @@
+$ astro build
+13:29:24 [types] Generated 66ms
+13:29:24 [build] output: "static"
+13:29:24 [build] mode: "static"
+13:29:24 [build] directory: /workspace/scratch/c74f3849dbf9/kampus-coffee/dist/
+13:29:24 [build] Collecting build info...
+13:29:24 [build] ✓ Completed in 166ms.
+13:29:24 [build] Building static entrypoints...
+13:29:25 [vite] ✓ built in 776ms

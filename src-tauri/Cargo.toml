@@ -1,6 +1,6 @@
 [package]
 name = "hello-mobil"
-version = "0.1.0"
+version = "0.2.0"
 description = "Kampus Coffee educational order demo"
 authors = ["Mustafa Mert Köksal"]
 edition = "2021"

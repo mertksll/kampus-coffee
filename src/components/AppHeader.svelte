@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { tema } from "$lib/tema.svelte";
   import { validProfile } from "$lib/coffee";
+  import {menuPath, language} from "$lib/i18n";
   import Icon from "./Icon.svelte";
   import AppNav from "./AppNav.svelte";
   let { lang = "tr", currentPath = "/" }: { lang?: string; currentPath?: string } = $props();
@@ -38,7 +39,7 @@
 
 <header class="site-header">
   <div class="header-inner">
-    <a href="/" class="wordmark"
+    <a href={menuPath(language(lang))} class="wordmark"
       ><span class="mark"><img src="/brand-mark.png" alt="" width="36" height="36" /></span><span
         >Kampus's <b>Coffee</b><small
           >{lang === "tr"

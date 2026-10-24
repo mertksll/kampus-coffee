@@ -1,4 +1,4 @@
-import type { CartItem } from './cart-item';
+import type { CartItem } from "./cart-item";
 export type OrderStatus = 0 | 1 | 2;
 export interface Order {
   code: string; // KMP- ve 8 hexadecimal karakter.

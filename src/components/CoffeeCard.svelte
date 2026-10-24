@@ -1,7 +1,7 @@
 <script lang="ts">
   import Kart from "$lib/components/ui/Kart.svelte";
   import Icon from "./Icon.svelte";
-  import { tl, brandFor, type Product } from "$lib/coffee";
+  import { tl, type Product } from "$lib/coffee";
   let {
     product,
     href,

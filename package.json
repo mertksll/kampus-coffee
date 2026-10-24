@@ -1,6 +1,6 @@
 {
   "name": "kampus-coffee",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Kampus içi kahve siparişi eğitim demosu",
   "type": "module",
   "scripts": {
@@ -10,7 +10,8 @@
     "astro": "astro",
     "tauri": "tauri",
     "check": "astro check && svelte-check --tsconfig ./tsconfig.json",
-    "test": "bun test"
+    "test": "bun test",
+    "test:e2e": "playwright test"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@playwright/test": "1.62.1",
     "@tauri-apps/cli": "^2",
     "@types/bun": "^1.4.2",
     "@types/node": "^26.6.4",
