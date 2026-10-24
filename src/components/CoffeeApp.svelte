@@ -731,7 +731,7 @@
             <small>Sipariş durumunu buradan güncelleyebilirsin.</small>{#if order.status < 2}<button
                 class="text-button"
                 onclick={() => {
-                  order.status++;
+                  order.status = order.status === 0 ? 1 : 2;
                   save();
                 }}>Sonraki durum <Icon name="chevron" size={15} /></button
               >{/if}<button class="outline compact" onclick={() => reorder(order)}
