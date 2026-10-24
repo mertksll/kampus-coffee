@@ -1,5 +1,10 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Yukleniyor from '$lib/components/ui/Yukleniyor.svelte';
+  import BosDurum from '$lib/components/ui/BosDurum.svelte';
+  import HataDurumu from '$lib/components/ui/HataDurumu.svelte';
+  import { loadList, type ListState } from '$lib/lists';
+  import { messages, menuPath, type Language } from '$lib/i18n';
   import Icon from "./Icon.svelte";
   import CoffeeCard from "./CoffeeCard.svelte";
   import {
@@ -23,7 +28,18 @@
     type Order,
     type Profile,
   } from "$lib/coffee";
-  let { view = "menu", productId = 1 }: { view?: string; productId?: number } = $props();
+  let { view = "menu", productId = 1, lang = 'tr' }: { view?: string; productId?: number; lang?: Language } = $props();
+  const words = $derived(messages[lang]);
+  let listState = $state<ListState>('yukleniyor');
+  let loadedProducts = $state<Product[]>([]);
+  async function load(scenario = '') {
+    listState = 'yukleniyor';
+    try {
+      if (view === 'orders') orders = await loadList(() => orders, scenario);
+      else loadedProducts = await loadList(() => products, scenario);
+      listState = 'dolu';
+    } catch { listState = 'hata'; }
+  }
   let cart = $state<CartItem[]>([]),
     orders = $state<Order[]>([]),
     favorites = $state<number[]>([]),
@@ -64,7 +80,7 @@
     ),
   );
   const filtered = $derived.by(() => {
-    let result = products.filter(
+    let result = loadedProducts.filter(
       (p) =>
         (cafe === "Tümü" || p.cafe === cafe) &&
         (kind === "Tümü" || p.kind === kind) &&
@@ -106,6 +122,7 @@
     }
     milk = selected.defaultMilk;
     ready = true;
+    void load(new URLSearchParams(window.location.search).get('durum') ?? '');
   });
   function notify(text: string, error = false) {
     notice = text;
@@ -361,21 +378,12 @@
       <p class="results-count">
         {filtered.length} kahve seni bekliyor{cafe !== "Tümü" ? " · " + cafe : ""}
       </p>
-      <div class="coffee-grid">
-        {#each filtered as p}<CoffeeCard
-            product={p}
-            favorite={favorites.includes(p.id)}
-            onFavorite={favorite}
-            onAdd={(p) => add(p)}
-            {ready}
-          />{/each}
-      </div>
-      {#if !filtered.length}<div class="empty-state">
-          <span class="empty-icon"><Icon name="search" size={34} /></span>
-          <h3>Bu molaya uygun kahve bulunamadı.</h3>
-          <p>Aramanı veya filtrelerini değiştirerek tekrar deneyebilirsin.</p>
-          <button class="btn compact" onclick={resetFilters}>Tüm kahveleri göster</button>
-        </div>{/if}
+      {#if listState === 'yukleniyor'}<Yukleniyor metin={words.loading} />
+      {:else if listState === 'hata'}<HataDurumu mesaj={words.error} dugmeMetni={words.retry} tekrarDene={() => load()} />
+      {:else if !filtered.length}<BosDurum baslik={words.empty} aciklama={words.emptyText} dugmeMetni={words.clear} onclick={resetFilters} />
+      {:else}<div class="coffee-grid">
+        {#each filtered as p}<CoffeeCard product={p} favorite={favorites.includes(p.id)} onFavorite={favorite} onAdd={(p) => add(p)} {ready} />{/each}
+      </div>{/if}
     </section>
     <section class="group-banner">
       <span class="group-icon"><Icon name="gift" size={38} /></span>
@@ -662,14 +670,11 @@
           ></button
         >{/each}
     </div>
-    {#if !visibleOrders.length}<section class="empty-state large">
-        <span class="empty-icon"><Icon name="orders" size={38} /></span>
-        <h2>{orders.length ? "Bu bölümde siparişin yok." : "İlk kahve molan seni bekliyor."}</h2>
-        <p>Sipariş oluşturduğunda durumunu buradan takip edebilirsin.</p>
-        <a class="btn compact" href="/">Kahveleri keşfet <Icon name="arrow" size={18} /></a>
-      </section>{/if}
+    {#if listState === 'yukleniyor'}<Yukleniyor metin={words.loading} />
+    {:else if listState === 'hata'}<HataDurumu mesaj={words.error} dugmeMetni={words.retry} tekrarDene={() => load()} />
+    {:else if !visibleOrders.length}<BosDurum baslik={words.orders} aciklama={words.orderText} dugmeMetni={words.menu} onclick={() => { window.location.href = menuPath(lang); }} />{/if}
     <div class="orders-list">
-      {#each visibleOrders as order}<article class="panel order-card">
+      {#each (listState === 'dolu' ? visibleOrders : []) as order}<article class="panel order-card">
           <div class="order-card-top">
             <div class="order-brand">
               <img src={brandFor(order.cafe).image} alt="" width="48" height="48" />

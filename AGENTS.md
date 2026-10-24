@@ -54,3 +54,5 @@ Her batch teslim etiketi, o batch tamamlandığında doğrulanmış master commi
 
 Yeni veri alanı önce src/lib/types/ içinde tanımlanır.
 - [Veri modeli](docs/veri-modeli.md)
+
+- [Geliştirme notları](docs/gelistirme-notlari.md)
