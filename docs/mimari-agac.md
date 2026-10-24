@@ -68,3 +68,5 @@ Gezinme değişimi **1024 px**, kahve listesinin üç sütuna geçişi **1200 px
 
 ## Batch 02 rotaları
 Menü: `/`, `/en/`, `/ar/`, `/fa/`. Ürün: `/urun/[id]/`, `/en/urun/[id]/`, `/ar/urun/[id]/`, `/fa/urun/[id]/`. Her dilde 24 statik ürün rotası; bilinmeyen adresler `404.astro` ekranına düşer. Tauri statik dosya sunucusunun bilinmeyen adres davranışı ayrıca cihazda doğrulanmalıdır. Menü arama/kafe/tür/sıralama/favori durumu URL sorgusuna yazılır ve detay bağlantısına taşınır; geri dönüş bu sorguyu kullanır.
+
+Sipariş geçmişinin ortak durum mesajları ayrıca `/en/siparisler/`, `/ar/siparisler/`, `/fa/siparisler/` adreslerinde de kullanılır.

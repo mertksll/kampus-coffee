@@ -6,8 +6,9 @@
  let {productId=-1,lang='tr'}: {productId?:number;lang?:Language} = $props();
  const product = $derived(products.find(p=>p.id===productId));
  const words = $derived(messages[lang]);
- let size = $state('Standart'),milk=$state('Normal süt'),quantity=$state(1),notice=$state(''),error=$state(false),ready=$state(false),back=$state(menuPath(lang));
- onMount(()=>{milk=product?.defaultMilk ?? 'Normal süt';back=menuPath(lang)+window.location.search;ready=true;});
+ let size = $state('Standart'),milk=$state('Normal süt'),quantity=$state(1),notice=$state(''),error=$state(false),ready=$state(false),search=$state('');
+ const back = $derived(menuPath(lang)+search);
+ onMount(()=>{milk=product?.defaultMilk ?? 'Normal süt';search=window.location.search;ready=true;});
  function add(){
   if(!product)return;
   try {
@@ -23,7 +24,7 @@
  <a class="breadcrumb" href={back}>{words.menu}</a>
  {#if product}
  <div class="product-detail"><div class="detail-image"><img src={product.image} alt={product.name} width="880" height="980" /></div>
- <section class="detail-options"><span class="pill">{product.cafe} · {product.kind}</span><h1>{product.name}</h1><p class="detail-description">{product.description}</p>
+ <section class="detail-options"><span class="pill">{product.cafe} · {({tr:product.kind,en:product.kind==='Sıcak'?'Hot':'Iced',ar:product.kind==='Sıcak'?'ساخن':'بارد',fa:product.kind==='Sıcak'?'گرم':'سرد'})[lang]}</span><h1>{product.name}</h1><p class="detail-description">{({tr:product.description,en:`Customize ${product.name} with your preferred size and milk.`,ar:`اختر الحجم والحليب المفضلين لقهوتك ${product.name}.`,fa:`اندازه و شیر دلخواه را برای ${product.name} انتخاب کنید.`})[lang]}</p>
  <strong class="detail-price">{tl(unitPrice({productId:product.id,size,milk,quantity:1}))}</strong>
  <label class="milk-label">{words.size}<select bind:value={size}>{#each sizes as s,i}<option value={s}>{i === 0 ? words.standard : words.large}</option>{/each}</select></label>
  <label class="milk-label">{words.milk}<select bind:value={milk}>{#each milks as m,i}<option value={m}>{({tr:milks,en:['Dairy milk','Oat milk','No milk'],ar:['حليب عادي','حليب الشوفان','دون حليب'],fa:['شیر معمولی','شیر جو دوسر','بدون شیر']})[lang][i]}</option>{/each}</select></label>

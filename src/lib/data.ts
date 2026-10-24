@@ -1,4 +1,4 @@
-import type { Product, CartItem, Order, Profile } from './types';
+import type { Product, CartItem, Order, Profile } from "./types";
 export const products: Product[] = [
   {
     id: 1,
@@ -267,6 +267,30 @@ export const products: Product[] = [
 ];
 
 // Tamamen sentetik ders verisi; kullanıcı geçmişine otomatik eklenmez.
-export const exampleCartItems: CartItem[] = products.slice(0, 6).map(p => ({productId:p.id, size:'Standart', milk:p.defaultMilk, quantity:1}));
-export const exampleOrders: Order[] = products.slice(0,6).map((p,i) => ({code:`KMP-${(i+1).toString(16).padStart(8,'0')}`, cafe:p.cafe, items:[exampleCartItems[i]], address:`Demo Bina / 1 / D${i+1}`, total:p.price, discount:0, status:0, created:'2026-10-24T09:00:00.000Z'}));
-export const exampleProfiles: Profile[] = Array.from({length:6},(_,i)=>({name:`Demo ${i+1}`,building:'Demo Bina',floor:'1',room:`D${i+1}`,cafe:'Starbucks'}));
+export const exampleCartItems: CartItem[] = products
+  .slice(0, 6)
+  .map((p) => ({
+    productId: p.id,
+    size: "Standart",
+    milk: p.defaultMilk,
+    quantity: 1,
+  }));
+export const exampleOrders: Order[] = products
+  .slice(0, 6)
+  .map((p, i) => ({
+    code: `KMP-${(i + 1).toString(16).padStart(8, "0")}`,
+    cafe: p.cafe,
+    items: [exampleCartItems[i]],
+    address: `Demo Bina / 1 / D${i + 1}`,
+    total: p.price,
+    discount: 0,
+    status: 0,
+    created: "2026-10-24T09:00:00.000Z",
+  }));
+export const exampleProfiles: Profile[] = Array.from({ length: 6 }, (_, i) => ({
+  name: `Demo ${i + 1}`,
+  building: "Demo Bina",
+  floor: "1",
+  room: `D${i + 1}`,
+  cafe: "Starbucks",
+}));

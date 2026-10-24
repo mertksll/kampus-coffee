@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import {menuPath, language} from "$lib/i18n";
   import Icon from "./Icon.svelte";
   import { validCart, totals } from "$lib/coffee";
   let { currentPath = "/", lang = "tr" }: { currentPath?: string; lang?: string } = $props();
@@ -10,7 +11,7 @@
     ar: ["استكشف", "سلتي", "طلباتي", "الملف"],
     fa: ["کشف", "سبد من", "سفارش‌ها", "پروفایل"],
   };
-  const routes = ["/", "/sepet/", "/siparisler/", "/profil/"];
+  const routes = $derived([menuPath(language(lang)), "/sepet/", menuPath(language(lang))+"siparisler/", "/profil/"]);
   const icons = ["coffee", "bag", "orders", "user"];
   onMount(() => {
     const read = () => {

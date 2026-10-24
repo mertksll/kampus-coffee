@@ -1,0 +1,3 @@
+96 ürün rotası: dil, yön ve başlık kontrolleri geçti.
+404 statik çıktısı: bulunamadı mesajı mevcut.
+Bu kontrol tarayıcı etkileşimi veya ekran görüntüsü yerine geçmez.

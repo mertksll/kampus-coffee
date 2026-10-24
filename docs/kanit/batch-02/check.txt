@@ -1,0 +1,12 @@
+$ astro check && svelte-check --tsconfig ./tsconfig.json
+13:29:15 [types] Generated 312ms
+13:29:15 [check] Getting diagnostics for Astro files in /workspace/scratch/c74f3849dbf9/kampus-coffee...
+Result (41 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+
+Loading svelte-check in workspace: /workspace/scratch/c74f3849dbf9/kampus-coffee
+Getting Svelte diagnostics...
+
+svelte-check found 0 errors and 0 warnings

@@ -60,3 +60,5 @@ Yeni veri alanı önce src/lib/types/ içinde tanımlanır.
 Yeni özellikte platform tablosunu güncelle. Rust çağrıları yalnız src/lib/native.ts üzerinden yapılır.
 - [Komutlar](docs/komutlar.md)
 - [Platform desteği](docs/platform-destegi.md)
+
+- [Batch 02 ilerleme](docs/ilerleme-batch-02.md)

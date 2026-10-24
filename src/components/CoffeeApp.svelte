@@ -36,7 +36,7 @@
   async function load(scenario = '') {
     listState = 'yukleniyor';
     try {
-      if (view === 'orders') orders = await loadList(() => orders, scenario);
+      if (view === 'orders') orders = await loadList(() => { const value: unknown = JSON.parse(localStorage.getItem('kampus-orders') ?? '[]'); if (!validOrders(value)) throw new Error('Geçersiz geçmiş'); return value; }, scenario);
       else loadedProducts = await loadList(() => products, scenario);
       listState = 'dolu';
     } catch { listState = 'hata'; }
@@ -202,8 +202,8 @@
       notify("Profil kaydedilemedi. Tarayıcı depolama iznini kontrol et.", true);
     }
   }
-  async function checkout(event: SubmitEvent) {
-    event.preventDefault();
+  async function checkout(event?: SubmitEvent) {
+    event?.preventDefault();
     if (busy || !ready || !cart.length) return;
     if (!building.trim() || !floor.trim() || !room.trim()) {
       notify("Bina, kat ve sınıf bilgilerini tamamla.", true);
@@ -398,89 +398,6 @@
         >Birlikte bir mola <Icon name="arrow" size={18} /></a
       >
     </section>
-  {:else if view === "detail"}
-    <a href="/" class="breadcrumb"><Icon name="back" size={17} />Kahvelere dön</a>
-    <div class="product-detail">
-      <div class="detail-image">
-        <img
-          src={selected.image}
-          alt={selected.name + " için kahve fotoğrafı"}
-          width="880"
-          height="980"
-        /><button
-          class="favorite-button"
-          class:saved={favorites.includes(selected.id)}
-          aria-label="Favori durumunu değiştir"
-          aria-pressed={favorites.includes(selected.id)}
-          onclick={() => favorite(selected.id)}
-          disabled={!ready}><Icon name="heart" /></button
-        >
-      </div>
-      <section class="detail-options">
-        <div class="detail-brand">
-          <img src={brandFor(selected.cafe).image} alt="" width="38" height="38" /><span
-            >{selected.cafe}</span
-          ><span class="pill">{selected.kind}</span>
-        </div>
-        <h1>{selected.name}</h1>
-        <p class="detail-description">{selected.description}</p>
-        <strong class="detail-price"
-          >{tl(unitPrice({ productId: selected.id, size, milk, quantity: 1 }))}<small>
-            / adet</small
-          ></strong
-        >
-        <div class="option-group">
-          <h3>Kahvenin boyu</h3>
-          <div class="size-options">
-            {#each sizes as s}<button
-                class:chosen={size === s}
-                aria-pressed={size === s}
-                onclick={() => (size = s)}
-                ><Icon name="coffee" size={s === "Büyük" ? 29 : 22} /><strong>{s}</strong><small
-                  >{s === "Standart" ? "Klasik mola" : "+15 TL"}</small
-                ></button
-              >{/each}
-          </div>
-        </div>
-        <label class="milk-label"
-          >Süt tercihin<select bind:value={milk}
-            >{#each milks as m}<option>{m}</option>{/each}</select
-          ><small>Yulaf sütü +10 TL</small></label
-        >
-        <div class="detail-add">
-          <div class="stepper">
-            <button aria-label="Adedi azalt" disabled={quantity <= 1} onclick={() => quantity--}
-              ><Icon name="minus" size={17} /></button
-            ><input
-              aria-label="Kahve adedi"
-              type="number"
-              min="1"
-              max="99"
-              step="1"
-              bind:value={quantity}
-            /><button aria-label="Adedi artır" disabled={quantity >= 99} onclick={() => quantity++}
-              ><Icon name="plus" size={17} /></button
-            >
-          </div>
-          <button class="btn" disabled={!ready} onclick={() => add(selected, true)}
-            >Sepete ekle <span
-              >{tl(
-                unitPrice({ productId: selected.id, size, milk, quantity: 1 }) * (quantity || 1),
-              )}</span
-            ></button
-          >
-        </div>
-        <a class="text-button" href="/sepet/">Sepetimi gör <Icon name="arrow" size={17} /></a>
-        <div class="detail-note">
-          <Icon name="gift" />
-          <p>
-            Arkadaşlarınla 5 kahveye tamamla,<br /><strong
-              >%10 toplu sipariş indirimini yakala.</strong
-            >
-          </p>
-        </div>
-      </section>
-    </div>
   {:else if view === "cart"}
     <div class="page-heading">
       <div>
@@ -890,7 +807,7 @@
     </div>
   {/if}
 </div>
-{#if notice && noticeError}<HataDurumu mesaj={notice} dugmeMetni={words.retry} tekrarDene={() => { notice = ''; }} />{/if}
+{#if notice && noticeError}<HataDurumu mesaj={notice} dugmeMetni={words.retry} tekrarDene={() => { if (view === 'cart') void checkout(); else notice = ''; }} />{/if}
 {#if notice}<div class="toast" class:error={noticeError} role="status" aria-live="polite">
     <Icon name={noticeError ? "coffee" : "check"} size={20} />
     <p>{notice}</p>

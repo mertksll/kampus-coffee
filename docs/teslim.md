@@ -1,6 +1,6 @@
 # Teslim ve değerlendirme düzeltmeleri — 10 Ekim 2026
 
-Öğrenci: **Mustafa Mert Köksal · 2620511152 · mertksll**. Proje: **Kampus's Coffee**. Güncel depo: [mertksll/kampus-coffee](https://github.com/mertksll/kampus-coffee), `keyvanarasteh/hello-mobil` fork'udur.
+Öğrenci: **Mustafa Mert Köksal · [kişisel numara kaldırıldı] · mertksll**. Proje: **Kampus's Coffee**. Güncel depo: [mertksll/kampus-coffee](https://github.com/mertksll/kampus-coffee), `keyvanarasteh/hello-mobil` fork'udur.
 
 ## Eğitmenin geri bildirimi
 

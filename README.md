@@ -37,7 +37,6 @@
 | Öğretim görevlisi | Öğr. Gör. Keyvan Arasteh Abbasabad |
 | Eğitmen bağlantıları | [Qrofessor](https://qrofessor.com) · [GitHub](https://github.com/keyvanarasteh) · [LinkedIn](https://www.linkedin.com/in/keyvanarasteh/) · [İSÜ](https://www.istinye.edu.tr) |
 | Öğrenci | **Mustafa Mert Köksal** |
-| Öğrenci numarası | **2620511152** |
 | GitHub / iletişim | [mertksll](https://github.com/mertksll) |
 | Fork | [mertksll/kampus-coffee](https://github.com/mertksll/kampus-coffee) |
 | Kaynak şablon | [keyvanarasteh/hello-mobil](https://github.com/keyvanarasteh/hello-mobil) |
@@ -100,3 +99,7 @@ Derleme çıktısı `dist/` dizinidir. Platform çıktıları ve hedefleri [mima
 ## Lisans
 
 Kaynak şablon ve bu uyarlama [Apache License 2.0](LICENSE) kapsamındadır. Üniversite ve üçüncü taraf marka adlarının hakları ilgili sahiplerine aittir. Bu proje MYO063 kapsamında hazırlanmış bir eğitim çalışmasıdır.
+
+## Batch 02
+
+[Hafta 4 ilerleme ve doğrulama](docs/ilerleme-batch-02.md) · [Veri modeli](docs/veri-modeli.md) · [Platform desteği](docs/platform-destegi.md) · [lat.md](lat.md/lat.md)
