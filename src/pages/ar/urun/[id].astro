@@ -1,0 +1,8 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ProductDetail from '../../../components/ProductDetail.svelte';
+import { products } from '../../../lib/coffee';
+export function getStaticPaths() { return products.map(product=>({params:{id:String(product.id)},props:{product}})); }
+const {product}=Astro.props;
+---
+<Layout lang="ar" title={product.name + " | Kampus's Coffee"}><ProductDetail client:load productId={product.id} lang="ar" /></Layout>

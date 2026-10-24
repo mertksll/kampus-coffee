@@ -65,3 +65,6 @@ Bu tablo ana kahve listesindeki `.coffee-grid`, `.app-page` ve `.app-nav` kurall
 Gezinme değişimi **1024 px**, kahve listesinin üç sütuna geçişi **1200 px** sınırındadır. Profil tercihleri sonraki sepetin teslimat alanlarını doldurur. RTL sayfalarında dil ve yön özellikleri bulunur; odak göstergesi, safe-area ve reduced-motion kuralları tanımlıdır.
 
 375–1920 px arasındaki 13 genişlikte grid, gezinme ve maksimum genişlik kuralları [statik CSS denetiminde](kanit/responsive-audit.txt) doğrulandı. Bu denetim görsel taşma veya gerçek cihaz testi değildir. Windows uygulamasının gerçek görüntüsü [Tauri kanıtında](kanit/tauri-dev.png); diğer ekran boyutlarının görsel doğrulama sınırı [teslim belgesinde](teslim.md) açıklanır.
+
+## Batch 02 rotaları
+Menü: `/`, `/en/`, `/ar/`, `/fa/`. Ürün: `/urun/[id]/`, `/en/urun/[id]/`, `/ar/urun/[id]/`, `/fa/urun/[id]/`. Her dilde 24 statik ürün rotası; bilinmeyen adresler `404.astro` ekranına düşer. Tauri statik dosya sunucusunun bilinmeyen adres davranışı ayrıca cihazda doğrulanmalıdır. Menü arama/kafe/tür/sıralama/favori durumu URL sorgusuna yazılır ve detay bağlantısına taşınır; geri dönüş bu sorguyu kullanır.
