@@ -5,6 +5,7 @@
   import HataDurumu from '$lib/components/ui/HataDurumu.svelte';
   import { loadList, type ListState } from '$lib/lists';
   import { messages, menuPath, type Language } from '$lib/i18n';
+  import { siparisOlustur } from "$lib/native";
   import Icon from "./Icon.svelte";
   import CoffeeCard from "./CoffeeCard.svelte";
   import {
@@ -216,18 +217,7 @@
     try {
       let code = "";
       for (let n = 0; n < 10; n++) {
-        if ("__TAURI_INTERNALS__" in window) {
-          const { invoke } = await import("@tauri-apps/api/core");
-          code = await invoke<string>("siparis_olustur");
-        } else {
-          code =
-            "KMP-" +
-            Array.from(crypto.getRandomValues(new Uint8Array(4)), (b) =>
-              b.toString(16).padStart(2, "0"),
-            )
-              .join("")
-              .toUpperCase();
-        }
+        code = (await siparisOlustur(sum.quantity)).code;
         if (!orders.some((o) => o.code === code)) break;
         code = "";
       }
@@ -900,6 +890,7 @@
     </div>
   {/if}
 </div>
+{#if notice && noticeError}<HataDurumu mesaj={notice} dugmeMetni={words.retry} tekrarDene={() => { notice = ''; }} />{/if}
 {#if notice}<div class="toast" class:error={noticeError} role="status" aria-live="polite">
     <Icon name={noticeError ? "coffee" : "check"} size={20} />
     <p>{notice}</p>

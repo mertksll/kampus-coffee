@@ -56,3 +56,7 @@ Yeni veri alanı önce src/lib/types/ içinde tanımlanır.
 - [Veri modeli](docs/veri-modeli.md)
 
 - [Geliştirme notları](docs/gelistirme-notlari.md)
+
+Yeni özellikte platform tablosunu güncelle. Rust çağrıları yalnız src/lib/native.ts üzerinden yapılır.
+- [Komutlar](docs/komutlar.md)
+- [Platform desteği](docs/platform-destegi.md)
