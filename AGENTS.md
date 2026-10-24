@@ -62,3 +62,6 @@ Yeni özellikte platform tablosunu güncelle. Rust çağrıları yalnız src/lib
 - [Platform desteği](docs/platform-destegi.md)
 
 - [Batch 02 ilerleme](docs/ilerleme-batch-02.md)
+
+Çince veya Japonca karakter üretme. Türkçe/İngilizce metin ve mevcut Arapça/Farsça çevirileri kullan. lat.md belgeleri uygulanan durumu anlatır; ajan kuralları yalnız bu dosyadadır.
+- [lat.md proje haritası](lat.md/lat.md)

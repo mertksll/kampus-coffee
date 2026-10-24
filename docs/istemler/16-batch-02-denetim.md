@@ -1,12 +1,15 @@
 # Görev 16 - Batch denetimi
-Araç/model: ChatGPT Work, Codex GPT-6. İstem: 4. hafta görevlerini uygula.
-Plan: Pencere alt sınırlarını ekle, Svelte tip hatalarını gider, veri akışlarını gözden geçir ve gerçekten çalıştırılan kontrol çıktılarını kaydet.
-Düzeltmeler: $props generic biçimi yerine tipli destructuring; geçersiz kimlikte ilk ürüne dönüş kaldırıldı; geçmiş hata denemesi kalıcı veriyi değiştirmez; hata bildirimi sipariş eylemini tekrar deneyebilir. Öğrenci numarası yeni kaynak metinden kaldırıldı.
-Doğrulama: check 0 hata/uyarı; 12 test geçti; 127 statik sayfa; 96 ürünün dil/yön kontrolü geçti. Gerçek çıktı docs/kanit/batch-02/ içinde.
-Kalan: Cargo, gerçek cihazlar, ekran kanıtları, PR/merge ve teslim etiketi. Bunlar yapılmış gibi gösterilmedi.
 
-Bağlantı sonrası plan: Her görevin kendi dalında check/build/test yeniden çalıştırıldı. #22-27 birleştirildi. GitHub Actions üzerinde Cargo ve Playwright doğrulaması, filtreli gezinme ve dört halin gerçek ekran kanıtı için eklendi; sonuçlar henüz varsayılmaz.
+Araç/model: ChatGPT Work, Codex GPT-6. İstem: 4. hafta görevlerini uygula. Devam istemi: "Bağlandı".
 
-İlk Actions web işi başarılı. Tekrar koşuda Astro geliştirme araç çubuğunun kendi h1 başlıkları testin genel h1 seçicisiyle çakıştı; seçici uygulama ana içeriğine daraltıldı. Uygulama davranışında hata gözlenmedi; test sonucu yeniden doğrulanacak.
+## Plan
+Her görevi ayrı PR ile sun; pencere alt sınırlarını ekle; gerçek kontrol çıktılarını ve ekran kanıtlarını kaydet. Son doğrulanmış master kaynak görüntüsüne batch etiketi koy.
 
-Son web koşusu 40096092271 başarılı; geliştirme araç çubuğu kapatıldı ve uygulama içeriğine daraltılan seçici ile 3 Chromium senaryosu geçti. Ekran görüntüleri bu koşudan alındı. Rust komutunun üç testi ilk tam koşuda başarılı.
+## Düzeltmeler
+Svelte props tipleri açık destructuring biçimine taşındı. Geçersiz kimlikte ilk ürüne dönüş kaldırıldı. Sipariş geçmişi hata denemesi kalıcı veriyi değiştirmez. Tekrar dene gerçek yüklemeyi yeniler. Öğrenci numarası kaynak metinden kaldırıldı. Tarayıcı testinin h1 seçicisi uygulama içeriğine daraltıldı; geliştirme araç çubuğu ekran kanıtlarından çıkarıldı.
+
+## Doğrulama
+Yerel check 0 hata/uyarı; 12 birim testi ve 127 sayfalık build başarılı. [Son Actions koşusu](https://github.com/mertksll/kampus-coffee/actions/runs/40096092271): web ve Rust işleri başarılı, 3 Chromium ve 3 Rust testi geçti. Dört hal ve RTL ekranları repoda. Görev PR'ları #22-28; lat.md PR #29. Etiket son PR birleşiminden sonra doğrulanmış master'a konur.
+
+## Öğrenciye kalan
+Kendi cihazında Tauri kontrolü, Görev 10 yeni sohbet deneyi ve Blackboard'a öğrenci teslimi. Ajan bunları yapılmış gibi kaydetmez. Beş gerçek cihazda çalıştırma iddiası yoktur.

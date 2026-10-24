@@ -1,5 +1,7 @@
 # Teslim ve değerlendirme düzeltmeleri — 10 Ekim 2026
 
+> Güncel Hafta 4 kaydı: [Batch 02 ilerleme ve doğrulama](ilerleme-batch-02.md). Aşağıdaki kayıt önceki Batch 01 teslim geçmişidir.
+
 Öğrenci: **Mustafa Mert Köksal · [kişisel numara kaldırıldı] · mertksll**. Proje: **Kampus's Coffee**. Güncel depo: [mertksll/kampus-coffee](https://github.com/mertksll/kampus-coffee), `keyvanarasteh/hello-mobil` fork'udur.
 
 ## Eğitmenin geri bildirimi

@@ -1,1 +1,1 @@
-See [AGENTS.md](AGENTS.md). All agent instructions and rules for this repository live there.
+Projedeki tek ajan kural kaynağı [AGENTS.md](AGENTS.md) dosyasıdır. Önce onu oku.

@@ -20,3 +20,7 @@ docs/tasks/**/raw/
 
 /playwright-report/
 /test-results/
+
+.lat-build
+lat.md/.cache/*
+!lat.md/.cache/lat_init.json
