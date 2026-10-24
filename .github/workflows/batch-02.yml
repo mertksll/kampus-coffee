@@ -1,8 +1,10 @@
 name: Batch 02 doğrulama
 on:
   pull_request:
+    paths-ignore: ['docs/**', 'lat.md/**', '.agents/**', 'AGENTS.md', 'CLAUDE.md', 'GEMINI.md', '.gitignore']
   push:
     branches: [master]
+    paths-ignore: ['docs/**', 'lat.md/**', '.agents/**', 'AGENTS.md', 'CLAUDE.md', 'GEMINI.md', '.gitignore']
 permissions:
   contents: read
 jobs:

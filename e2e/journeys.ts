@@ -31,8 +31,8 @@ test('klavye ile detay, filtreli dönüş, doğrudan adres ve 404',async({page,c
  const href=await card.getAttribute('href');
  await card.focus();await page.keyboard.press('Enter');
  await expect(page).toHaveURL(/\/urun\/\d+\//);
- const name=await page.locator('h1').innerText();
- const direct=await context.newPage();await direct.goto(href!);await expect(direct.locator('h1')).toHaveText(name);await direct.close();
+ const name=await page.locator('#main h1').innerText();
+ const direct=await context.newPage();await direct.goto(href!);await expect(direct.locator('#main h1')).toHaveText(name);await direct.close();
  await page.getByRole('link',{name:'Kahvelere dön',exact:true}).click();
  await expect(search).toHaveValue('Latte');
  await expect(page.getByRole('combobox',{name:'Kahveleri sırala'})).toHaveValue('price-up');
