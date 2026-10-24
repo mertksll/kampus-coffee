@@ -51,3 +51,6 @@ Her batch teslim etiketi, o batch tamamlandığında doğrulanmış master commi
 ## Yeni belgeler
 - [Görev şartnamesi](docs/gorev-sartnamesi.md)
 - [İstem günlükleri](docs/istemler/README.md)
+
+Yeni veri alanı önce src/lib/types/ içinde tanımlanır.
+- [Veri modeli](docs/veri-modeli.md)
