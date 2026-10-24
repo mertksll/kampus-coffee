@@ -1,6 +1,6 @@
 <script lang="ts">
   import { contactLabels } from "../lib/contact";
-  let { lang = "tr" } = $props<{ lang?: string }>();
+  let { lang = "tr" }: { lang?: string } = $props();
   let name = $state(""),
     email = $state(""),
     subject = $state(""),

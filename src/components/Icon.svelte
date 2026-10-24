@@ -1,5 +1,5 @@
 <script lang="ts">
-  let { name, size = 20 } = $props<{ name: string; size?: number }>();
+  let { name, size = 20 }: { name: string; size?: number } = $props();
   const shapes: Record<string, string> = {
     coffee:
       "M4 9h13v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V9Zm13 1h1a3 3 0 0 1 0 6h-1M7 3v3m4-3v3m4-3v3M3 22h16",
