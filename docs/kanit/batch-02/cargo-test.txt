@@ -1,0 +1,18 @@
+GitHub Actions run: https://github.com/mertksll/kampus-coffee/actions/runs/40095866407
+Head: 04fa0c4b72af47c71e92ff02c641dd0b824fb8e9
+Command: cargo +stable test --manifest-path src-tauri/Cargo.toml --locked
+
+2026-10-24T12:57:14.2258409Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 1m 40s
+2026-10-24T12:57:14.3101244Z      Running unittests src/lib.rs (src-tauri/target/debug/deps/hello_mobil_lib-371db27719ff0112)
+2026-10-24T12:57:14.3129199Z running 3 tests
+2026-10-24T12:57:14.3130429Z test orders::tests::rejects_zero ... ok
+2026-10-24T12:57:14.3131039Z test orders::tests::rejects_over_limit ... ok
+2026-10-24T12:57:14.3131667Z test orders::tests::valid_order ... ok
+2026-10-24T12:57:14.3135367Z      Running unittests src/main.rs (src-tauri/target/debug/deps/hello_mobil-3812096b26123729)
+2026-10-24T12:57:14.3140314Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-24T12:57:14.3148637Z running 0 tests
+2026-10-24T12:57:14.3149250Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-24T12:57:14.3149767Z    Doc-tests hello_mobil_lib
+2026-10-24T12:57:14.4128536Z running 0 tests
+2026-10-24T12:57:14.4129400Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
