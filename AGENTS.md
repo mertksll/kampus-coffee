@@ -44,3 +44,10 @@ Derleme kanıtını docs/kanit/ altında tut. Native test yapılamadıysa açık
 Blackboard'a teslimi öğrenci yapar; ajan teslim etmez ve öğretmene mesaj göndermez.
 
 Her batch teslim etiketi, o batch tamamlandığında doğrulanmış master commitini göstermelidir. Değerlendirilmiş batch etiketini sonraki görevler için taşıma. Yeni ZIP'i kendi kaynak commitiyle karşılaştır; bir etiket ZIP'i ise etiketin hedefiyle eşleştir. Git geçmişindeki eski PR’siz işlemleri gizleme veya yeniden yazma; teslim kaydında kapsamını açıkça belirt.
+
+## Çalışma döngüsü
+Önce şartnameyi oku, planı sun ve kullanıcının onayını bekle; kullanıcı mevcut oturumda uygulamayı açıkça yetkilendirmişse aynı izni tekrar isteme. Onaydan sonra değiştir. Her görev ayrı feature dalı ve PR ile ilerler. `bun run build` 0 hata vermeden görev bitmiş sayılmaz. Gerçek istemi, planı, düzeltmeleri ve test sonuçlarını görev günlüğüne yaz. Öğrencinin yapmadığı elle kontrolleri yapılmış gösterme.
+
+## Yeni belgeler
+- [Görev şartnamesi](docs/gorev-sartnamesi.md)
+- [İstem günlükleri](docs/istemler/README.md)
