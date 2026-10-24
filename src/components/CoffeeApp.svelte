@@ -121,8 +121,20 @@
       notify("Cihazdaki kayıt okunamadı. Yeni bir kahve molasıyla başlayabilirsin.", true);
     }
     milk = selected.defaultMilk;
+    if (view === 'menu') {
+      const params=new URLSearchParams(window.location.search);
+      query=params.get('q') ?? ''; cafe=params.get('cafe') ?? 'Tümü'; kind=params.get('kind') ?? 'Tümü'; sort=params.get('sort') ?? 'featured'; onlyFavorites=params.get('fav')==='1';
+    }
     ready = true;
     void load(new URLSearchParams(window.location.search).get('durum') ?? '');
+  });
+  function filterParams() {
+    return new URLSearchParams({q:query,cafe,kind,sort,fav:onlyFavorites?'1':'0'}).toString();
+  }
+  function detailLink(id: number) { return `${menuPath(lang)}urun/${id}/?${filterParams()}`; }
+  $effect(()=>{
+    const params=filterParams();
+    if(ready && view==='menu') window.history.replaceState(null,'',`${menuPath(lang)}?${params}${window.location.hash}`);
   });
   function notify(text: string, error = false) {
     notice = text;
@@ -382,7 +394,7 @@
       {:else if listState === 'hata'}<HataDurumu mesaj={words.error} dugmeMetni={words.retry} tekrarDene={() => load()} />
       {:else if !filtered.length}<BosDurum baslik={words.empty} aciklama={words.emptyText} dugmeMetni={words.clear} onclick={resetFilters} />
       {:else}<div class="coffee-grid">
-        {#each filtered as p}<CoffeeCard product={p} favorite={favorites.includes(p.id)} onFavorite={favorite} onAdd={(p) => add(p)} {ready} />{/each}
+        {#each filtered as p}<CoffeeCard href={detailLink(p.id)} product={p} favorite={favorites.includes(p.id)} onFavorite={favorite} onAdd={(p) => add(p)} {ready} />{/each}
       </div>{/if}
     </section>
     <section class="group-banner">

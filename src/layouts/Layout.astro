@@ -26,6 +26,8 @@ const words = labels[lang] ?? labels.tr;
 const pages = ["hakkinda", "iletisim", "kosullar", "gizlilik", "rehber"];
 const current = Astro.url.pathname.split("/").filter(Boolean).at(-1) ?? "hakkinda";
 const info = pages.includes(current) ? current : "hakkinda";
+const detail = Astro.url.pathname.match(/\/urun\/(\d+)\/?$/);
+const isMenu = /^\/(en\/|ar\/|fa\/)?$/.test(Astro.url.pathname);
 const prefix = lang === "tr" ? "" : "/" + lang;
 ---
 
@@ -72,7 +74,7 @@ const prefix = lang === "tr" ? "" : "/" + lang;
           ["fa", "فارسی"],
         ].map(([code, name]) => (
           <a
-            href={`${code === "tr" ? "" : "/" + code}/${info}/`}
+            href={`${code === "tr" ? "" : "/" + code}${detail ? "/urun/" + detail[1] + "/" : isMenu ? "/" : "/" + info + "/"}`}
             lang={code}
             hreflang={code}
             aria-current={lang === code ? "page" : undefined}

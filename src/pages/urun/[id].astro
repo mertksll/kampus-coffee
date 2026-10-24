@@ -1,13 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import CoffeeApp from "../../components/CoffeeApp.svelte";
-import { products } from "../../lib/coffee";
-export function getStaticPaths() {
-  return products.map((p) => ({ params: { id: String(p.id) }, props: { product: p } }));
-}
-const { product } = Astro.props;
+import Layout from '../../layouts/Layout.astro';
+import ProductDetail from '../../components/ProductDetail.svelte';
+import { products } from '../../lib/coffee';
+export function getStaticPaths() { return products.map(product=>({params:{id:String(product.id)},props:{product}})); }
+const {product}=Astro.props;
 ---
-
-<Layout title={product.name + " | Kampus's Coffee"}>
-  <CoffeeApp client:load view="detail" productId={product.id} />
-</Layout>
+<Layout lang="tr" title={product.name + " | Kampus's Coffee"}><ProductDetail client:load productId={product.id} lang="tr" /></Layout>
