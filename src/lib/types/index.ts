@@ -4,3 +4,4 @@ export type { Order, OrderStatus } from "./order";
 export type { Profile } from "./profile";
 export type { KartProps } from "./ui";
 export type { OrderCode, NativeError, Platform, Feature } from "./native";
+export type { IzinDurumu } from "./izin";

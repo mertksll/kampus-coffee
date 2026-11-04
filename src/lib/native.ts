@@ -1,4 +1,4 @@
-import type { OrderCode, NativeError, Platform, Feature } from "./types";
+import type { OrderCode, NativeError, Platform, Feature, IzinDurumu } from "./types";
 const isNative = () =>
   typeof window !== "undefined" && "__TAURI_INTERNALS__" in window;
 export async function platform(): Promise<Platform> {
@@ -42,4 +42,23 @@ export async function siparisOlustur(quantity: number): Promise<OrderCode> {
       message: "Sipariş kodu üretilemedi.",
     } satisfies NativeError;
   }
+}
+
+/** İzin durumunu okur; web'de Rust yoksa boş döner (asla diyalog açmaz). */
+export async function izinDurumu(): Promise<IzinDurumu[]> {
+  if (!isNative()) return [];
+  const { invoke } = await import("@tauri-apps/api/core");
+  return invoke<IzinDurumu[]>("permissions_status");
+}
+/** Verilen izin için OS diyaloğunu açar, güncel durumu döner. */
+export async function izinIste(id: string): Promise<IzinDurumu[]> {
+  if (!isNative()) return [];
+  const { invoke } = await import("@tauri-apps/api/core");
+  return invoke<IzinDurumu[]>("permission_request", { id });
+}
+/** Sipariş hazır bildirimi gönderir (izin verildiyse). */
+export async function bildirimGonder(baslik: string, govde: string): Promise<void> {
+  if (!isNative()) return;
+  const { invoke } = await import("@tauri-apps/api/core");
+  await invoke("bildirim_gonder", { baslik, govde });
 }

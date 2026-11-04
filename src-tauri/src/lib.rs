@@ -1,4 +1,5 @@
 mod orders;
+mod permissions;
 #[tauri::command]
 fn siparis_olustur(quantity: u32) -> Result<orders::OrderCode, orders::OrderError> { orders::create_order(quantity) }
 #[tauri::command]
@@ -7,7 +8,14 @@ fn platform_bilgisi() -> &'static str { std::env::consts::OS }
 pub fn run() {
  tauri::Builder::default()
   .plugin(tauri_plugin_opener::init())
-  .invoke_handler(tauri::generate_handler![siparis_olustur,platform_bilgisi])
+  .plugin(tauri_plugin_notification::init())
+  .invoke_handler(tauri::generate_handler![
+    siparis_olustur,
+    platform_bilgisi,
+    permissions::permissions_status,
+    permissions::permission_request,
+    permissions::bildirim_gonder
+  ])
   .run(tauri::generate_context!())
   .expect("Kampus's Coffee başlatılamadı");
 }
